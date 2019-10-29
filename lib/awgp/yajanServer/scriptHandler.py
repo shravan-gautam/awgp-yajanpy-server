@@ -30,17 +30,22 @@ class PythonScriptHandler:
 
         
         with open(document_root + path)  as rnf:
+
             try:
-                str = rnf.read()
                 old_stdout = sys.stdout
                 result = StringIO()
                 sys.stdout = result
+                str = rnf.read()
                 exec(str)
                 result_string = result.getvalue()
                 self.response.write(result_string)
                 result.close()
                 
-            except:
-                self.response.write(sys.exc_info()[1])
-          
+            except SyntaxError:
+                import traceback
+                exc = traceback.format_exc()
+                print("Error in "+document_root + path)
+                print(exc)
+                result_string = result.getvalue()
+                self.response.write(result_string)          
         

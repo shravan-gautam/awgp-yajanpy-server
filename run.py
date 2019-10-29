@@ -24,11 +24,6 @@ from config import parm
 document_root = parm["webroot"]
 db=[]
 
-if len(parm['database']) > 0 :
-    for dblink in parm["database"] :
-        if dblink["driver"] == "oracle" :
-            False
-#            db[len(db)] = cx_Oracle.connect(dblink["username"]+"/"+dblink["password"]+"@"+dblink["host"]+":"+dblink["port"]+"/"+dblink["database"])
 
 
 try:
@@ -38,9 +33,9 @@ except FileExistsError:
 
 
 if os.path.isfile(document_root+"/index.py")== False:
-    str = "print(\"It's working\")"
+    pystr = "print(\"It's working\")"
     file = open(document_root+"/index.py","w")
-    file.write(str)
+    file.write(pystr)
 
 class S(BaseHTTPRequestHandler):
     def _set_headers(self):
