@@ -11,7 +11,7 @@ import os
 import subprocess
 import cx_Oracle
 #os.environ['LD_LIBRARY_PATH'] = "/usr/lib/oracle/12.1/client64/lib"
-conn = cx_Oracle.connect('finance/fin@90.0.0.14/skunj')
+conn = cx_Oracle.connect('connection string')
 document_root = "www"
 
 
